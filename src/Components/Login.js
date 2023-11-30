@@ -1,16 +1,20 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {addPassword} from "../utils/cartSlice";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addEmail, addPassword } from '../utils/cartSlice';
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation = useNavigate();
   const dispatch = useDispatch();
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addEmail(email));
     dispatch(addPassword(password));
-    console.log("email password", email, password);
+
+    console.log('email password', email, password);
+    navigation('/');
   };
 
   return (
@@ -23,12 +27,13 @@ const Login = () => {
           <div className="mb-2">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-gray-800">
+              className="block text-sm font-semibold text-gray-800"
+            >
               Email
             </label>
             <input
               value={email}
-              onChange={e => {
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
               type="email"
@@ -39,12 +44,13 @@ const Login = () => {
           <div className="mb-2">
             <label
               htmlFor="password"
-              className="block text-sm font-semibold text-gray-800">
+              className="block text-sm font-semibold text-gray-800"
+            >
               Password
             </label>
             <input
               value={password}
-              onChange={e => {
+              onChange={(e) => {
                 setPassword(e.target.value);
               }}
               type="password"
@@ -63,8 +69,8 @@ const Login = () => {
         </form>
 
         <p className="mt-8 text-xs font-light text-center text-gray-700">
-          {" "}
-          Don't have an account?{" "}
+          {' '}
+          Don't have an account?{' '}
           <a href="#" className="font-medium text-purple-600 hover:underline">
             Sign up
           </a>
