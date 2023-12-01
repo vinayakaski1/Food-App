@@ -1,27 +1,28 @@
-import './index.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import Header from './Components/Header';
-import Body from './Components/Body';
-import About from './About';
-import Contact from './Contact';
-import Error from './Error';
+import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {Provider} from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+import Header from "./Components/Header";
+import Body from "./Components/Body";
+import About from "./About";
+import Contact from "./Contact";
+import Error from "./Error";
 import {
   createBrowserRouter,
   RouterProvider,
   Routes,
   Route,
   BrowserRouter,
-} from 'react-router-dom';
-import RestaurantMenu from './Components/RestaurantMenu';
+} from "react-router-dom";
+import RestaurantMenu from "./Components/RestaurantMenu";
 
-import Footer from './Footer';
-import Login from './Components/Login';
+import Footer from "./Footer";
+import Login from "./Components/Login";
 
-import appStore, { persistor } from './utils/appStore';
-import PrivateRoute from './PrivateRoute';
+import appStore, {persistor} from "./utils/appStore";
+import PrivateRoute from "./PrivateRoute";
+import Cart from "./Components/Cart";
 
 const App = () => {
   return (
@@ -43,6 +44,14 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route
+                path="/cart"
+                element={
+                  <PrivateRoute>
+                    <Cart />
+                  </PrivateRoute>
+                }
+              />
+              <Route
                 path="/restaurant/:resId"
                 element={
                   <PrivateRoute>
@@ -59,5 +68,5 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);

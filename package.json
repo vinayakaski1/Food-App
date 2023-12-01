@@ -4,7 +4,8 @@
   "description": "This is namaste react",
   "scripts": {
     "test": "react-scripts test",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "Vinayak Aski",
